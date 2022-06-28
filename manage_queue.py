@@ -13,7 +13,7 @@ class Queue(object):
         return self.dests
 
     def _add_to_queue(self, floor, direction):
-        self.dests[int(floor)].append(direction.lower())
+        self.dests[int(floor)].append(direction)
         return self.dests
 
     def _delete_from_queue(self, floor):

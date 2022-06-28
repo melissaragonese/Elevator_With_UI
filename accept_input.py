@@ -10,6 +10,18 @@ from tkinter import *
 import tkinter
 from manage_queue import Queue
 
+dir_str_2_num = {
+    'down': -1,
+    'exit': 0,
+    'up': 1
+}
+
+dir_num_2_str = {
+    1: 'up',
+    0: 'exit',
+    -1: 'down'
+}
+
 class AcceptInput(tkinter.Tk):
     def __init__(self, floor, direction, min_floor, max_floor, queue):
         super().__init__()
@@ -25,12 +37,15 @@ class AcceptInput(tkinter.Tk):
         def submit(q):
             for summon in self.new_summons_list:
                 summon = summon.split()
-                q._add_to_queue(int(summon[0]), summon[1])
+                q._add_to_queue(int(summon[0]), dir_str_2_num[summon[1].lower()])
             close()
 
         def undo():
-            self.new_summons_list.pop()
-            summon_list_display.delete(END)
+            try:
+                self.new_summons_list.pop()
+                summon_list_display.delete(END)
+            except:
+                pass
 
         def close():
             self.destroy()
@@ -45,7 +60,7 @@ class AcceptInput(tkinter.Tk):
         pane_1_items = [
             tkinter.Label(text="ELLevator", font='Helvetica 18 bold'),
             tkinter.Label(text="Current Floor: " + str(floor)),
-            tkinter.Label(text="Current Direction: " + str(direction).upper()),
+            tkinter.Label(text="Current Direction: " + dir_num_2_str[direction].upper()),
             tkinter.Label(text="Current Destinations: " + ', '.join([str(x) for x in queue._get_queue().keys()])),
             tkinter.Label(text="Selected Inputs", font='Helvetica 14 bold')
         ]
@@ -99,7 +114,7 @@ class AcceptInput(tkinter.Tk):
         w3.add(tkinter.Button(w3, text=str(max_floor), command=lambda j=str(max_floor) + ' Exit': append(j)))
 
         """
-        Append Submit Bottom to second pane so it appears at the bottom of the interface...
+        Append Submit Button to second pane so it appears at the bottom of the interface...
         Probably a better way to do this
         """
         w2.add(Button(w2, text="Undo", command=undo))
