@@ -41,6 +41,6 @@ python3 main.py
 - The Elevator **will not stop** at a floor if there exists an external summon request for the current floor _in the **opposite** direction the Elevator is already traveling_
 
 ##### Limitations (personal and technical)
-- The Elevator can only accept input while the doors are open. This is largely because my computer threw a fit when I tried to add an event listener. I'm sure this was my fault. I also do not really know how to implement an event listener (also multithreading?). I also think the user interface is not really the point of this exercise, but I did try to make one. It bounces around a bit, as it is a pop-up window.
+- The Elevator can only accept input while the doors are open. I think the user interface is not really the point of this exercise, but I did try to make one. It bounces around a bit, as it is a pop-up window.
 - The Elevator's behavior is hard-coded at the moment. It cannot quickly become another flavor of Elevator.
-- The Elevator currently checks direction and if it should open its doors twice. This is in response to the decisions outlined above. I imagine there is a more efficient way to ensure the Elevator turns around at the top or bottom of its path, but I kept things simple for my and your (mostly my) sanity.
+- The Elevator currently checks direction and it checks if it should open its doors _twice_ in main.py. This allows the Elevator to turn around at the top or bottom of its path. I imagine there is a more efficient way to ensure the Elevator turns around, but I left it this way for my and your (mostly my) sanity.
