@@ -35,7 +35,7 @@ python3 main.py
 - The Elevator accepts an input of (floor, exit) from the 'inside'. This is logged as a destination.
 
 ##### Decisions
-- The Elevator moves incremenetally up and down along a list of integers between and including a provided minimum and maximum floor number. At each floor, the Elevator will decide if it should stop.
+- The Elevator moves incremenetally up and down along a list of integers between and including a provided minimum and maximum floor number. At each floor, the Elevator will decide if it should change direction and decide if it should stop.
 - The Elevator **will stop** at a floor if there exists an external summon request for the current floor _in the **same** direction the Elevator is already traveling_
 - The Elevator **will stop** at a floor if there exists an internal request for the current floor, _regardless of direction_
 - The Elevator **will not stop** at a floor if there exists an external summon request for the current floor _in the **opposite** direction the Elevator is already traveling_
